@@ -31,3 +31,4 @@ def test_category_count(sample_category):
     assert Category.category_count == 1
     Category("Iphone 15", "512GB, Gray space", [])
     assert Category.category_count == 2
+

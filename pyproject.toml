@@ -38,4 +38,4 @@ line-length = 119
 exclude = ".git"
 isort = "^6.0.1"
 [tool.isort]
-line_lenght = 119
+line_lenght = 119222
