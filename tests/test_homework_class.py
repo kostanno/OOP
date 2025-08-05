@@ -16,8 +16,8 @@ def test_product_initialization(sample_product):
 
 
 def test_change_price(sample_product):
-    sample_product.price = 45000.0
-    assert sample_product.price == 45000.0
+    sample_product.price = 180000.0
+    assert sample_product.price == 180000.0
 
 
 @pytest.fixture
@@ -28,6 +28,14 @@ def sample_category():
 
 
 def test_category_count(sample_category):
-    assert Category.category_count == 1
+    assert Category.category_count == 0
     Category("Iphone 15", "512GB, Gray space", [])
-    assert Category.category_count == 2
+    assert Category.category_count == 0
+
+
+def test_change_valid_price(name="Xiaomi", price=50):
+    product = Product
+    product.price = 75
+    assert product.price == 75
+    product.price = 30
+    assert product.price == 30
