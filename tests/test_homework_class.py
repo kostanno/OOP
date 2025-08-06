@@ -1,7 +1,6 @@
 import pytest
 from src.homework_class import Product
 from src.homework_class import Category
-from typing import List, Dict
 
 
 @pytest.fixture
@@ -41,13 +40,8 @@ def test_price(sample_product):
     product.price = 30
     assert product.price == 30
 
+
 def test_products():
-    products = [
-    {"name": "Телефон", "price": 50000, "quantity": 10},
-    {"name": "Ноутбук", "price": 80000, "quantity": 5},
-    ]
-    expected = (
-    "Телефон, 50000 руб. Остаток: 10 шт.\n"
-    "Ноутбук, 80000 руб. Остаток: 5 шт.\n"
-    )
+    products = [{"name": "Телефон", "price": 50000, "quantity": 10}, {"name": "Ноутбук", "price": 80000, "quantity": 5},]
+    expected = ("Телефон, 50000 руб. Остаток: 10 шт.\n", "Ноутбук, 80000 руб. Остаток: 5 шт.\n")
     assert(products, expected)
