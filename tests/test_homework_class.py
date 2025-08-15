@@ -1,5 +1,5 @@
 import pytest
-from src.homework_class import Product, Category, LawnGrass,Smartphone
+from src.homework_class import Product, Category, LawnGrass, Smartphone
 
 
 @pytest.fixture
@@ -63,6 +63,7 @@ def test_str(product):
     assert product.name in result
     assert f"{product.price} руб." in result
     assert f"Остаток: {product.quantity} шт." in result
+
 
 def test_Smartphone():
     smartphone1 = Smartphone(
