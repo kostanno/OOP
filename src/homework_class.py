@@ -11,10 +11,7 @@ class BaseProduct(ABC):
 
     @abstractmethod
     def get_full_info(self):
-        return (f"{self.name}"
-                f"{self.price}"
-                f"{self.description}")
-
+        return f"{self.name}" f"{self.price}" f"{self.description}"
 
     def __str__(self):
         return f"{self.name} - {self.price} руб."
@@ -44,10 +41,10 @@ class Product(MixinLog, BaseProduct):
     @classmethod
     def new_product(cls, product_data):
         return cls(
-            name=product_data['name'],
-            description=product_data['description'],
-            price=product_data['price'],
-            quantity=product_data['quantity']
+            name=product_data["name"],
+            description=product_data["description"],
+            price=product_data["price"],
+            quantity=product_data["quantity"],
         )
 
     @property
@@ -70,10 +67,7 @@ class Product(MixinLog, BaseProduct):
         return (self.price * self.quantity) + (other.price * other.quantity)
 
     def get_full_info(self):
-        return (f"{self.name}"
-                f"{self.price}"
-                f"{self.description}"
-                f"{self.quantity}")
+        return f"{self.name}" f"{self.price}" f"{self.description}" f"{self.quantity}"
 
 
 class Smartphone(Product):
@@ -86,14 +80,16 @@ class Smartphone(Product):
         self.color = color
 
     def get_full_info(self):
-        return (f"{self.name}"
-                f"{self.price}"
-                f"{self.description}"
-                f"{self.quantity}"
-                f"{self.efficiency}"
-                f"{self.model}"
-                f"{self.memory}"
-                f"{self.color}")
+        return (
+            f"{self.name}"
+            f"{self.price}"
+            f"{self.description}"
+            f"{self.quantity}"
+            f"{self.efficiency}"
+            f"{self.model}"
+            f"{self.memory}"
+            f"{self.color}"
+        )
 
 
 class LawnGrass(Product):
@@ -104,13 +100,15 @@ class LawnGrass(Product):
         self.color = color
 
     def full_info(self):
-        return (f"{self.name}\n"
-                f"{self.price} руб.\n"
-                f"{self.description}\n"
-                f"{self.quantity}\n"
-                f"{self.germination_period}"
-                f"{self.country}"
-                f"{self.color}")
+        return (
+            f"{self.name}\n"
+            f"{self.price} руб.\n"
+            f"{self.description}\n"
+            f"{self.quantity}\n"
+            f"{self.germination_period}"
+            f"{self.country}"
+            f"{self.color}"
+        )
 
 
 class Category:
