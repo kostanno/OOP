@@ -99,12 +99,12 @@ class LawnGrass(Product):
         self.germination_period = germination_period
         self.color = color
 
-    def full_info(self):
+    def get_full_info(self):
         return (
-            f"{self.name}\n"
-            f"{self.price} руб.\n"
-            f"{self.description}\n"
-            f"{self.quantity}\n"
+            f"{self.name}"
+            f"{self.price}"
+            f"{self.description}"
+            f"{self.quantity}"
             f"{self.germination_period}"
             f"{self.country}"
             f"{self.color}"
