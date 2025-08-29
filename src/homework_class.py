@@ -1,4 +1,34 @@
-class Product:
+from abc import ABC, abstractmethod
+
+
+class BaseProduct(ABC):
+
+    def __init__(self, name, price, description):
+        super().__init__()
+        self.name = name
+        self.price = price
+        self.description = description
+
+    @abstractmethod
+    def get_full_info(self):
+        return (f"{self.name}"
+                f"{self.price}"
+                f"{self.description}")
+
+
+    def __str__(self):
+        return f"{self.name} - {self.price} руб."
+
+
+class MixinLog:
+    def __init__(self):
+        print(repr(self))
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}, {self.name}, {self.description}, {self.price}, {self.quantity}"
+
+
+class Product(MixinLog, BaseProduct):
     name: str
     description: str
     price: float
@@ -9,9 +39,10 @@ class Product:
         self.description = description
         self.__price = price
         self.quantity = quantity
+        super().__init__()
 
     @classmethod
-    def new_product(cls, product_data: dict):
+    def new_product(cls, product_data):
         return cls(
             name=product_data['name'],
             description=product_data['description'],
@@ -38,14 +69,31 @@ class Product:
             raise TypeError("Нельзя складывать товары разных классов")
         return (self.price * self.quantity) + (other.price * other.quantity)
 
+    def get_full_info(self):
+        return (f"{self.name}"
+                f"{self.price}"
+                f"{self.description}"
+                f"{self.quantity}")
+
 
 class Smartphone(Product):
+
     def __init__(self, name, description, price, quantity, efficiency, model, memory, color):
         super().__init__(name, description, price, quantity)
         self.efficiency = efficiency
         self.model = model
         self.memory = memory
         self.color = color
+
+    def get_full_info(self):
+        return (f"{self.name}"
+                f"{self.price}"
+                f"{self.description}"
+                f"{self.quantity}"
+                f"{self.efficiency}"
+                f"{self.model}"
+                f"{self.memory}"
+                f"{self.color}")
 
 
 class LawnGrass(Product):
@@ -54,6 +102,15 @@ class LawnGrass(Product):
         self.country = country
         self.germination_period = germination_period
         self.color = color
+
+    def full_info(self):
+        return (f"{self.name}\n"
+                f"{self.price} руб.\n"
+                f"{self.description}\n"
+                f"{self.quantity}\n"
+                f"{self.germination_period}"
+                f"{self.country}"
+                f"{self.color}")
 
 
 class Category:
